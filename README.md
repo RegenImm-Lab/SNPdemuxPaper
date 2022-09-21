@@ -12,4 +12,4 @@ Zebrafish, axolotl, and green monkey: https://colab.research.google.com/drive/1y
 Xenopus: https://colab.research.google.com/drive/1lO4ny8Uv9n1lPIbHmZKFPyxWI7gjmZPs?usp=sharing#scrollTo=5NbAyigRiBsx
 Pleurodeles: https://colab.research.google.com/drive/1Zbbpi1WwfKGwrrFhuecrHE3lSjP0Pzsz#scrollTo=dJTlyRO8ipjf
 Pleurodeles and Notophthalmus cellplex: https://colab.research.google.com/drive/12ZNvvfiUt3DL6UpTg8BjQMSd4Y-6yM3u#scrollTo=o-G_FjoCYO_f
-Pleurodeles and Notophalmus barnyard:https://colab.research.google.com/drive/1JS8kRUGAioDM2IvYa4oBDzNMKLxBhHV_#scrollTo=dJTlyRO8ipjf
+Pleurodeles and Notophthalmus barnyard:https://colab.research.google.com/drive/1JS8kRUGAioDM2IvYa4oBDzNMKLxBhHV_#scrollTo=dJTlyRO8ipjf
