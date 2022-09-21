@@ -1,5 +1,4 @@
 Code from Nick for analyzing synthetically pooled axolotl data
-zebrafish bellow.
 ```{r}
 library(Seurat)
 library(tximport)
