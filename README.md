@@ -14,6 +14,7 @@ Zebrafish, axolotl, and green monkey (Figure 1, and Supplemental Figure 1): http
 Xenopus (Figure 2): https://colab.research.google.com/drive/1lO4ny8Uv9n1lPIbHmZKFPyxWI7gjmZPs?usp=sharing#scrollTo=5NbAyigRiBsx
 
 Pleurodeles (Figure 3): https://colab.research.google.com/drive/1Zbbpi1WwfKGwrrFhuecrHE3lSjP0Pzsz#scrollTo=dJTlyRO8ipjf
+We have also included the file plasmids.add.to.ref.fa which can be appended to a Pleurodeles reference to map the fluorscent genes for each of the fluorescent Pleurodeles strains.
 
 Pleurodeles and Notophthalmus cellplex (Figure 4): https://colab.research.google.com/drive/12ZNvvfiUt3DL6UpTg8BjQMSd4Y-6yM3u#scrollTo=o-G_FjoCYO_f
 
