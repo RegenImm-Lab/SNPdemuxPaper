@@ -1,5 +1,5 @@
 # SNPdemuxPaper
-Scripts used in Cardiello et al. 2022 Biorxiv Accurate genotype-based demultiplexing of single cell RNA sequencing samples from non-human animals" 
+Scripts used in Cardiello et al. 2022 Biorxiv "Accurate genotype-based demultiplexing of single cell RNA sequencing samples from non-human animals" 
 
 With 10X Cellranger count and multi generated files, as well as souporcell generated clusters.tsv files, we first read these into R for filtering,
 correlation analysis and subsequent assignment label renaming, UMAP plotting, and assembling/saving of dataframes for python analysis.
