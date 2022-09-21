@@ -1,0 +1,23 @@
+R version 4.1.2 (2021-11-01)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Monterey 12.2.1
+
+Matrix products: default
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats4    stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] Matrix_1.4-0                DropletUtils_1.14.2         SingleCellExperiment_1.16.0
+ [4] SummarizedExperiment_1.24.0 Biobase_2.54.0              GenomicRanges_1.46.1       
+ [7] GenomeInfoDb_1.30.0         IRanges_2.28.0              S4Vectors_0.32.3           
+[10] BiocGenerics_0.40.0         MatrixGenerics_1.6.0        matrixStats_0.61.0         
+[13] forcats_0.5.1               purrr_0.3.4                 readr_2.1.2                
+[16] tidyr_1.1.4                 tibble_3.1.6                tidyverse_1.3.1            
+[19] BUSpaRse_1.8.0              ggplot2_3.3.5               stringr_1.4.0              
+[22] dplyr_1.0.7                 tximport_1.22.0             SeuratObject_4.0.4         
+[25] Seurat_4.1.0 
