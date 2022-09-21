@@ -1,10 +1,11 @@
 # SNPdemuxPaper
 for depositing scripts used in benchmarking SNP demux data
 
-With 10X Cellranger count and multi generated files, as well as souporcell generated clusters.tsv files, I first read these into R for filterring,
-correlation analysis and subsequent assignment label renaming, UMAP plotting, and saving of dataframes for python analysis.
+With 10X Cellranger count and multi generated files, as well as souporcell generated clusters.tsv files, we first read these into R for filterring,
+correlation analysis and subsequent assignment label renaming, UMAP plotting, and assembling/saving of dataframes for python analysis.
 
-R scripts for this analysis are in this github page.
+R scripts for this analysis are in this github page and are labelled by figure they were used for, and species. These R scripts were used to produce the 
+dataframe files needed for python analyses posted bellow. 
 
 Python analysis took place in individual google colab notebooks here:
 Zebrafish, axolotl, and green monkey: https://colab.research.google.com/drive/1yXzE3WJ05hEJKdy7owiXOpCjYvUm4DDJ#scrollTo=xoYMouNlv1JK
