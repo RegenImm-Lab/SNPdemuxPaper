@@ -27,8 +27,8 @@ library(stringr)
 ```
 ## Import data
 ```{r}
-setwd('/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints')
-data_dir <- "/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints"
+setwd('/Directory')
+data_dir <- "/Directory"
 
 #read in xl data
 raw_xl <- Read10X(data.dir = data_dir)
@@ -184,7 +184,7 @@ ggplot(df_XenowLabels, aes(x=reorder(combined, combined, function(x)-length(x)))
 ```
 ```{r}
 #saving of unfilterred dataframe (or just filterring done by CR)
-write.table(df_XenowLabels, "/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/220803.Xenopus.fluor.soup.comparison.Unfiltered.txt", sep = '\t', col.names = T)
+write.table(df_XenowLabels, "/Directory/220803.Xenopus.fluor.soup.comparison.Unfiltered.txt", sep = '\t', col.names = T)
 
 #filterring of Seurat object:
 #setting a minimum and maximum reads counts. this is pretty typical except that we're raising the bar
@@ -202,7 +202,7 @@ FilterredCellBarcodes <- colnames(so.demux_s1_filterred)
 Xeno.df.filterred <- df_XenowLabels[FilterredCellBarcodes,]
 
 #now, save the filterredDF
-write.table(Xeno.df.filterred,"/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/220803.Xeno.fluor.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
+write.table(Xeno.df.filterred,"/Directory/220803.Xeno.fluor.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
 
 ```
 
@@ -250,31 +250,31 @@ plot1 + plot2 + plot3 + plot4 + plot5
 #save outputs when satisfied:
 
 
-saveRDS(so.demux_s1_filterred_Norm, file = "/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/220803_XenoDemuxFilterredNormData.rds")
-saveRDS(so.demux_s1, file = "/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/220803_XenoDemuxAllData.rds")
+saveRDS(so.demux_s1_filterred_Norm, file = "/Directory/220803_XenoDemuxFilterredNormData.rds")
+saveRDS(so.demux_s1, file = "/Directory/220803_XenoDemuxAllData.rds")
 sessionInfo()
 
-pdf("/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/figures/220803_Xeno_Figure_Venusplot.pdf") 
+pdf("/Directory/220803_Xeno_Figure_Venusplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot1)
 dev.off()
 
-pdf("/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/figures/220803_Xeno_Figure_mCherryplot.pdf") 
+pdf("/Directory/220803_Xeno_Figure_mCherryplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot2)
 dev.off()
 
-pdf("/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/figures/220803_Xeno_Figure_TFPplot.pdf") 
+pdf("/Directory/220803_Xeno_Figure_TFPplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot3)
 dev.off()
 
-pdf("/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/figures/220803_Xeno_Figure_Multiplot.pdf") 
+pdf("/Directory/220803_Xeno_Figure_Multiplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4)
 dev.off()
 
-pdf("/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/figures/220803_Xeno_Figure_Soupplot.pdf") 
+pdf("/Directory/220803_Xeno_Figure_Soupplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot5)
 dev.off()
@@ -286,7 +286,7 @@ ggplot(so.demux_s1_filterred_Norm@meta.data, aes(x=reorder(combined, combined, f
   geom_bar(stat="count", width=0.7, fill="steelblue")+
   theme(axis.text.x = element_text(angle = 90)) -> upset
 
-pdf("/Users/nicholasleigh/Desktop/Lund/data/snp_paper/xenopus/early_timepoints/figures/220803_Xeno_Figure_Upset.pdf") 
+pdf("/Directory/220803_Xeno_Figure_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(upset)
 dev.off()
