@@ -14,7 +14,7 @@ library(tidyr)
 Next, import data I need for spleen2 mapped to the dual species index
 ```{r}
 #okay so this is gunna be quite a bit of loading
-setwd('/Users/joecardiello/Documents/LeighLab/Data/Sp2_Dual_PleuroFlursNoto_ST_220718')
+setwd('/Directory/')
 
 Read10X(data.dir = "filtered_feature_bc_matrix/") -> rna_s2dual
 
@@ -28,7 +28,7 @@ table(souporcell_calls_s2dual$assignment)
 
 #alternative option for souporcell read in is the souporcell n=3 run on spleen2 data
 #mapped only to pleuro, so the 3 would be the two pleuro animals, and 1 for the combined noto
-setwd('/Users/joecardiello/Documents/LeighLab/Data/Sp2_PleuroFluros_ST_220718')
+setwd('/Directory')
 
 #load metadata from souporcell N=3 (pleuor only)
 souporcell_calls_s2pleuro <- read.table('clusters.tsv', sep = '\t', header = T, row.names = 1)
@@ -110,7 +110,7 @@ ggplot(cell_species, aes(n_Noto_umi, n_Pleuro_umi, color = species)) +
 ggplot(cell_species, aes(n_Noto_umi, n_Pleuro_umi, color = species)) +
   geom_point() -> BarnPlotSp2Dual_unfilterred
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220809_DemuxFiguresV2/Fig2_Sp2_Barnyard/220907_Figure2_BarnyardPlotUnfilterred.pdf") 
+pdf("/Directory/220907_Figure2_BarnyardPlotUnfilterred.pdf") 
 #or do same as above but png, takes up way less room
 print(BarnPlotSp2Dual_unfilterred)
 dev.off()
@@ -212,7 +212,7 @@ And by a lowest total read depth??
 Want to save a file of the Dataframe after Filtration, to enable plotting of both
 ```{r}
 #saving of unfilterred dataframe (or just filterring done by CR)
-write.table(Spleen2dual.df, "/Users/joecardiello/Documents/LeighLab/Data/220729.Figure2.spleen2.barnyard.soup.comparison.Unfilterred.txt", sep = '\t', col.names = T)
+write.table(Spleen2dual.df, "/Directory/220729.Figure2.spleen2.barnyard.soup.comparison.Unfilterred.txt", sep = '\t', col.names = T)
 
 #filterring of Seurat object:
 #setting a minimum and maximum reads counts. this is pretty typical except that we're raising the bar
@@ -229,7 +229,7 @@ FilterredCellBarcodesSp2Dual <- colnames(so.demux_s2_dual_filterred)
 Spleen2dual.df.filterred <- Spleen2dual.df[FilterredCellBarcodesSp2Dual,]
 
 #now, save the filterredDF
-write.table(Spleen2dual.df.filterred, "/Users/joecardiello/Documents/LeighLab/Data/220729.Figure2.spleen2.barnyard.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
+write.table(Spleen2dual.df.filterred, "/Directory/220729.Figure2.spleen2.barnyard.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
 table(Spleen2dual.df.filterred$species)
 
 ```
@@ -273,31 +273,31 @@ DimPlot(so.demux_s2_dual_filterred_norm, group.by = 'soup_assign') ->plot5
 
 #save outputs when satisfied:
 
-saveRDS(so.demux_s2_dual_filterred_norm, file = "/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Spleen2DualDemuxFilterredNormData.rds")
-saveRDS(so.demux_s2_dual, file = "/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Spleen2DualDemuxAllData.rds")
+saveRDS(so.demux_s2_dual_filterred_norm, file = "/Directory/220729_Spleen2DualDemuxFilterredNormData.rds")
+saveRDS(so.demux_s2_dual, file = "/UDirectory/220729_Spleen2DualDemuxAllData.rds")
 sessionInfo()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_GFPplot.pdf") 
+pdf("/Directory/220729_Figure2_GFPplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot1)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_NotoGene1yplot.pdf") 
+pdf("/Directory/220729_Figure2_NotoGene1yplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot2)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_NotoGene2plot.pdf") 
+pdf("/Directory/220729_Figure2_NotoGene2plot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot3)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_BanyardColorsUmapplot.pdf") 
+pdf("/Directory/220729_Figure2_BanyardColorsUmapplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_Soupplot.pdf") 
+pdf("/Directory/220729_Figure2_Soupplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot5)
 dev.off()
@@ -312,7 +312,7 @@ table(factor(so.demux_s2_dual_filterred_norm$soup_assign))
 #coloring by soup calls
 DimPlot(so.demux_s2_dual_filterred_norm, group.by = 'soup_assign') -> plot6
 #DimPlot(so.demux_s2_dual_filterred_norm, group.by = 'assignment',cols = c("blue", "purple", "red", "green")) -> plot6
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_SimplifiedSoupplot.pdf") 
+pdf("/Directory/220729_Figure2_SimplifiedSoupplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot6)
 dev.off()
@@ -329,7 +329,7 @@ ggplot(Spleen2dual.df.filterred, aes(x=reorder(combined2, combined2, function(x)
 
 #table(simple_s1)
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Figure2_Upset.pdf") 
+pdf("/Directory/220729_Figure2_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(upsetPlotSp2Dual)
 dev.off()
@@ -339,7 +339,7 @@ dev.off()
 ggplot(Spleen2dual.df.filterred, aes(n_Noto_umi, n_Pleuro_umi, color = species)) +
   geom_point() ->BarnPlotSp2Dual
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220801_Figure2_BarnyardPlot.pdf") 
+pdf("/Directory/220801_Figure2_BarnyardPlot.pdf") 
 #or do same as above but png, takes up way less room
 print(BarnPlotSp2Dual)
 dev.off()
