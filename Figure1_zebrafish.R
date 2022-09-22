@@ -12,8 +12,8 @@ library(DropletUtils)
 library(Matrix)
 library(tidyr)
 
-setwd('/Users/joecardiello/Documents/LeighLab/Data/220827_ZFdata')
-data_dir <- "/Users/joecardiello/Documents/LeighLab/Data/"
+setwd('/Directory/')
+data_dir <- "/Directory/"
 
 #meta <- read.table('clusters.tsv', sep = '\t', header = T, row.names = 1)
 metaZF <- read.table('zf.clusters.tsv', sep = '\t', header = T)
@@ -72,7 +72,7 @@ ggplot(cleaned.metaZF, aes(x=reorder(combined_assignment, combined_assignment, f
   geom_bar(stat="count", width=0.7, fill="steelblue")+
   theme(axis.text.x = element_text(angle = 90))->upsetPlotZF
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220809_DemuxFiguresV2/Fig6_AxoZF/220827_ZF_Figure_Upset.pdf") 
+pdf("/Directory/220827_ZF_Figure_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(upsetPlotZF)
 dev.off()
@@ -83,5 +83,5 @@ cleaned.metaZF[,c("status","assignment","combined_assignment", "origin","SNPread
 
 names(df_ZF) <- c('soup_status', 'soup_assign', 'combined', 'origin',"SNPreads")
 
-write.table(df_ZF, "/Users/joecardiello/Documents/LeighLab/Data/220827.ZF.ground.truth.soup.comparison.txt", sep = '\t', col.names = T)
+write.table(df_ZF, "/Directory/220827.ZF.ground.truth.soup.comparison.txt", sep = '\t', col.names = T)
 ```
