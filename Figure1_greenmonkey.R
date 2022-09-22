@@ -13,8 +13,8 @@ library(DropletUtils)
 library(Matrix)
 library(tidyr)
 
-setwd('/Users/joecardiello/Documents/LeighLab/Data/220915_greenMonkeyData')
-data_dir <- "/Users/joecardiello/Documents/LeighLab/Data/"
+setwd('/Directory')
+data_dir <- "/Directory/"
 
 #Nick did a lot of filterring in R, here I'm just editing end of script to change the assignment names to allow direct comparisons and correlation analysis.
 
@@ -68,7 +68,7 @@ ggplot(cleaned.meta, aes(x=reorder(combined_assignment, combined_assignment, fun
   geom_bar(stat="count", width=0.7, fill="steelblue")+
   theme(axis.text.x = element_text(angle = 90))->upsetPlot
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220809_DemuxFiguresV2/Fig1_AxoZF/2200917_GM_Figure_Upset.pdf") 
+pdf("Directory/2200917_GM_Figure_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(upsetPlot)
 dev.off()
@@ -80,5 +80,5 @@ cleaned.meta[,c("status","assignment","combined_assignment", "origin")] -> df_Mo
 
 names(df_Monkey) <- c('soup_status', 'soup_assign', 'combined', 'origin')
 
-write.table(df_Monkey, "/Users/joecardiello/Documents/LeighLab/Data/220917.GM.ground.truth.soup.comparison.txt", sep = '\t', col.names = T)
+write.table(df_Monkey, "/Directory/220917.GM.ground.truth.soup.comparison.txt", sep = '\t', col.names = T)
 ```
