@@ -12,8 +12,8 @@ library(DropletUtils)
 library(Matrix)
 library(tidyr)
 
-setwd('/Users/joecardiello/Documents/LeighLab/Data/220811_axolotldata')
-data_dir <- "/Users/joecardiello/Documents/LeighLab/Data/"
+setwd('/Directory')
+data_dir <- "/Directory"
 
 #meta <- read.table('clusters.tsv', sep = '\t', header = T, row.names = 1)
 meta <- read.table('axo.clusters.tsv', sep = '\t', header = T)
@@ -72,7 +72,7 @@ ggplot(cleaned.meta, aes(x=reorder(combined_assignment, combined_assignment, fun
   geom_bar(stat="count", width=0.7, fill="steelblue")+
   theme(axis.text.x = element_text(angle = 90))->upsetPlot
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220809_DemuxFiguresV2/Fig6_AxoZF/220825_Axo_Figure_Upset.pdf") 
+pdf("/Directory/220825_Axo_Figure_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(upsetPlot)
 dev.off()
@@ -82,6 +82,6 @@ cleaned.meta[,c("status","assignment","combined_assignment", "origin","SNPreads"
 
 names(df_Axo) <- c('soup_status', 'soup_assign', 'combined', 'origin',"SNPreads")
 
-write.table(df_Axo, "/Users/joecardiello/Documents/LeighLab/Data/220825.Axo.ground.truth.soup.comparison.txt", sep = '\t', col.names = T)
+write.table(df_Axo, "/Directory/220825.Axo.ground.truth.soup.comparison.txt", sep = '\t', col.names = T)
 
 ```
