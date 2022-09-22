@@ -14,7 +14,7 @@ library(tidyr)
 Next, import data I need for spleen2 mapped to the dual species index
 ```{r}
 #okay so this is gunna be quite a bit of loading
-setwd('/Users/joecardiello/Documents/LeighLab/Data/Sp2_Dual_PleuroFlursNoto_ST_220718')
+setwd('/Directory/Sp2_Dual_PleuroFlursNoto_ST_220718')
 
 #load metadata from souporcell N=4 (dual species)
 souporcell_calls_s2dual <- read.table('clusters.tsv', sep = '\t', header = T, row.names = 1)
@@ -35,7 +35,7 @@ table(souporcell_calls_s2dual$assignment)
 
 #alternative option for souporcell read in is the souporcell n=3 run on spleen2 data
 #mapped only to pleuro, so the 3 would be the two pleuro animals, and 1 for the combined noto
-setwd('/Users/joecardiello/Documents/LeighLab/Data/Sp2_PleuroFluros_ST_220718')
+setwd('/Directory/Sp2_PleuroFluros_ST_220718')
 
 #load metadata from souporcell N=3 (pleuor only)
 souporcell_calls_s2pleuro <- read.table('clusters.tsv', sep = '\t', header = T, row.names = 1)
@@ -64,7 +64,7 @@ Loading in data matrixes from the raw outputs directory of the CR multi run. sho
 contain both the RNA reads from multi and the cellplex info.
 Then filterring these down to cells in the CR counts, filterred, output.
 ```{r}
-data_dir <- "/Users/joecardiello/Documents/LeighLab/Data/Sp2_Dual_PleuroFlursNoto_ST_220718/MultiOutputsRaw/raw_feature_bc_matrix"
+data_dir <- "/Directory"
 
 sp2demux <- Read10X(data.dir = data_dir)
 
@@ -83,7 +83,7 @@ dim(sp2rna)
 dim(sp2small_cellplex)
 
 #try importing my filterred CR counts matrix as a way to filter down to cells that seem real:
-setwd('/Users/joecardiello/Documents/LeighLab/Data/Sp2_Dual_PleuroFlursNoto_ST_220718')
+setwd('/Directory')
 Read10X(data.dir = "filtered_feature_bc_matrix/") -> Sp2counts
 dim(Sp2counts)
 
@@ -249,7 +249,7 @@ then filter the DF, and the Seurat object by a lowest total read depth
 Want to save a file of the Dataframe before and after Filtration, to enable plotting of both
 ```{r}
 #saving of unfilterred dataframe (or just filterring done by CR)
-write.table(Sp2dual.df, "/Users/joecardiello/Documents/LeighLab/Data/220804.Figure4.spleen2.cellplex.soup.comparison.Unfilterred.txt", sep = '\t', col.names = T)
+write.table(Sp2dual.df, "/Directory/220804.Figure4.spleen2.cellplex.soup.comparison.Unfilterred.txt", sep = '\t', col.names = T)
 
 #filterring of Seurat object:
 #setting a minimum and maximum reads counts. this is pretty typical except that we're raising the bar for minimum since we've seen this should help us just test accuracy on highest quality cells and then filterring for cells that have at least one read from a fluorophore marker gene
@@ -262,7 +262,7 @@ sp2so.demuxFilterredBarcodes <- colnames(sp2so.demuxFilterred)
 Sp2dual.df.filterred <- Sp2dual.df[sp2so.demuxFilterredBarcodes,]
 
 #now, save the filterredDF
-write.table(Sp2dual.df.filterred, "/Users/joecardiello/Documents/LeighLab/Data/220804.Figure4.spleen2.cellplex.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
+write.table(Sp2dual.df.filterred, "/Directory/220804.Figure4.spleen2.cellplex.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
 ```
 
 First up, we want to plot summed fluorescent reads/cell versus avg 'usable calls' by multi on Fluorescent reads. binned every thousand cells, sorted by fluor reads/cell.
@@ -302,31 +302,31 @@ DimPlot(sp2so.demuxFilterred_norm, group.by = 'MULTI_ID') ->plot4_4
 DimPlot(sp2so.demuxFilterred_norm, group.by = 'soup_assign') ->plot4_5
 
 #save outputs when satisfied:
-saveRDS(sp2so.demuxFilterred_norm, file = "/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Spleen2CellplexDualDemuxFilterredNormData.rds")
-#saveRDS(so.demux_s2_dual, file = "/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig2_Sp2_Barnyard/220729_Spleen2DualDemuxAllData.rds")
+saveRDS(sp2so.demuxFilterred_norm, file = "/Directory/220804_Spleen2CellplexDualDemuxFilterredNormData.rds")
+#saveRDS(so.demux_s2_dual, file = "/Directory/220729_Spleen2DualDemuxAllData.rds")
 sessionInfo()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_Cellplex1plot.pdf") 
+pdf("/Directory/220804_Figure4_Cellplex1plot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_1)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_Cellplex2plot.pdf") 
+pdf("/Directory/220804_Figure4_Cellplex2plot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_2)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_Cellplex3plot.pdf") 
+pdf("/Directory/220804_Figure4_Cellplex3plot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_3)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_MultiCellplexColorsUmapplot.pdf") 
+pdf("/Directory220804_Figure4_MultiCellplexColorsUmapplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_4)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_SoupUmapPlot.pdf") 
+pdf("/Directory/220804_Figure4_SoupUmapPlot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_5)
 dev.off()
@@ -340,7 +340,7 @@ table(factor(sp2so.demuxFilterred_norm$soup_assign))
 #coloring by soup calls
 DimPlot(sp2so.demuxFilterred_norm, group.by = 'soup_assign') -> plot4_6
 #DimPlot(so.demux_s2_dual_filterred_norm, group.by = 'assignment',cols = c("blue", "purple", "red", "green")) -> plot6
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_SimplifiedSoupplot.pdf") 
+pdf("/Directory/220804_Figure4_SimplifiedSoupplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_6)
 dev.off()
@@ -357,7 +357,7 @@ ggplot(Sp2dual.df.filterred, aes(x=reorder(combined2, combined2, function(x)-len
 
 #table(simple_s1)
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig4_Sp2_Cellplex/220804_Figure4_Upset.pdf") 
+pdf("/Directory/Fig4_Sp2_Cellplex/220804_Figure4_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4_7)
 dev.off()
