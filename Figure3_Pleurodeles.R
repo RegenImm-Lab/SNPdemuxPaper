@@ -16,7 +16,7 @@ library(tidyr)
 Next, import data I need for spleen1
 ```{r}
 
-setwd('/Users/joecardiello/Documents/LeighLab/Data/Sp1_PleuroFluros_ST_220718')
+setwd('/Directory')
 
 Read10X(data.dir = "filtered_feature_bc_matrix/") -> rna_s1
 
@@ -206,7 +206,7 @@ And by a lowest total read depth??
 Want to save a file of the Dataframe after Filtration, to enable plotting of both
 ```{r}
 #saving of unfilterred dataframe (or just filterring done by CR)
-write.table(Spleen1.df, "/Users/joecardiello/Documents/LeighLab/Data/220721.spleen1.fluor.soup.comparison.Unfilterred.txt", sep = '\t', col.names = T)
+write.table(Spleen1.df, "/Directory/220721.spleen1.fluor.soup.comparison.Unfilterred.txt", sep = '\t', col.names = T)
 
 #filterring of Seurat object:
 #setting a minimum and maximum reads counts. this is pretty typical except that we're raising the bar
@@ -220,7 +220,7 @@ FilterredCellBarcodes <- colnames(so.demux_s1_filterred)
 Spleen1.df.filterred <- Spleen1.df[FilterredCellBarcodes,]
 
 #now, save the filterredDF
-write.table(Spleen1.df.filterred, "/Users/joecardiello/Documents/LeighLab/Data/220721.spleen1.fluor.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
+write.table(Spleen1.df.filterred, "/Directory/220721.spleen1.fluor.soup.comparison.Filterred.txt", sep = '\t', col.names = T)
 
 ```
 
@@ -261,31 +261,31 @@ DimPlot(so.demux_s1_filterred_Norm, group.by = 'assignment') ->plot5
 
 #save outputs when satisfied:
 
-saveRDS(so.demux_s1_filterred_Norm, file = "/Users/joecardiello/Documents/LeighLab/Data/220722_DemuxRobjects/220722_Spleen1DemuxFilterredNormData.rds")
-saveRDS(so.demux_s1, file = "/Users/joecardiello/Documents/LeighLab/Data/220722_DemuxRobjects/220722_Spleen1DemuxAllData.rds")
+saveRDS(so.demux_s1_filterred_Norm, file = "/Directory/220722_Spleen1DemuxFilterredNormData.rds")
+saveRDS(so.demux_s1, file = "/Directory/220722_Spleen1DemuxAllData.rds")
 sessionInfo()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors/220722_Figure3_GFPplot.pdf") 
+pdf("/Directory/220722_Figure3_GFPplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot1)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors/220722_Figure3_Cherryplot.pdf") 
+pdf("/Directory/220722_Figure3_Cherryplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot2)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors/220722_Figure3_EBFPplot.pdf") 
+pdf("/Directory/220722_Figure3_EBFPplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot3)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors//220722_Figure3_Multiplot.pdf") 
+pdf("/Directory/220722_Figure3_Multiplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot4)
 dev.off()
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors/220722_Figure3_Soupplot.pdf") 
+pdf("/Directory/220722_Figure3_Soupplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot5)
 dev.off()
@@ -298,7 +298,7 @@ so.demux_s1_filterred_Norm$assignment <- factor(so.demux_s1_filterred_Norm$assig
 table(factor(so.demux_s1_filterred_Norm$assignment))
 #coloring by soup calls
 DimPlot(so.demux_s1_filterred_Norm, group.by = 'assignment',cols = c("blue", "purple", "red", "green")) -> plot6
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors/220722_Figure3_SimplifiedSoupplot.pdf") 
+pdf("/Directory/220722_Figure3_SimplifiedSoupplot.pdf") 
 #or do same as above but png, takes up way less room
 print(plot6)
 dev.off()
@@ -316,7 +316,7 @@ ggplot(Spleen1.df.filterred, aes(x=reorder(combined2, combined2, function(x)-len
 
 table(simple_s1)
 
-pdf("/Users/joecardiello/Documents/LeighLab/Data/220802_DemuxFigures/Fig3_Sp1_Fluors/220722_Figure3_Upset.pdf") 
+pdf("/Directory/220722_Figure3_Upset.pdf") 
 #or do same as above but png, takes up way less room
 print(upsetPlot)
 dev.off()
