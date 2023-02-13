@@ -23,16 +23,12 @@ separate(readnumbZF, barcode, sep = "-", c("barcodes", "originAgain")) -> readnu
 
 table(metaZF$status)
 #doublet    singlet unassigned 
-#334      10085        342 
+#44      1313        7 
 
 table(metaZF$assignment)
-#0  0/1  0/2    1  1/0  1/2    2  2/0  2/1 
-#3286   85  126 1875   66   46 5068   94  115 
+# 0 0/1 0/2   1 1/0 1/2   2 2/0 2/1 
+#437   9  11 434  10   7 444   6   6 
 
-#from web summaries cell numbers for 
-#D_1 = 2,193
-#L_1 = 3,628
-#M_1 = 6,016
 
 #will keep unassinged 
 #the cell origin is sorted in the barcode info barcode-# with the # being the origin
@@ -56,12 +52,9 @@ cleaned.metaZF[cleaned.metaZF$origin != "1S",] -> cleaned.metaZF
 
 #here we're replacing the souporcell assignments with values matching the animal origin assigments
 #that were found to correlate with them via an upset plot.
-#str_replace_all(cleaned.meta$assignment,"[2]", "Animal#3") -> cleaned.meta$assignment
-#str_replace_all(cleaned.meta$assignment,"[0]", "Animal#2") -> cleaned.meta$assignment
-#str_replace_all(cleaned.meta$assignment,"[1]", "Animal#1") -> cleaned.meta$assignment
-#str_replace_all(cleaned.metaZF$assignment,"[2]", "2") -> cleaned.metaZF$assignment
+str_replace_all(cleaned.metaZF$assignment,"[2]", "2") -> cleaned.metaZF$assignment
 str_replace_all(cleaned.metaZF$assignment,"[0]", "3") -> cleaned.metaZF$assignment
-#str_replace_all(cleaned.metaZF$assignment,"[1]", "1") -> cleaned.metaZF$assignment
+str_replace_all(cleaned.metaZF$assignment,"[1]", "1") -> cleaned.metaZF$assignment
 
 
 #now combine souporcell and ground truth to generate bar graph for an upset plot
